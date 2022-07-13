@@ -39,12 +39,24 @@ const Styles = styled.div`
       background-color: ${tableGreen};
       color: white;
       font-weight: 700;
+      min-width: 100px;
       :first-child {
         border-radius: 8px 0 0 0;
+        min-width: 50px;
       }
       :last-child {
         border-radius: 0 8px 0 0;
+        min-width: 300px;
       }
+    }
+
+    tbody tr:hover {
+      background-color: ${tableBgGrey} !important;
+    }
+
+    tbody tr:hover td {
+      color: ${tableGreen};
+      font-weight: 700;
     }
   }
 `;
