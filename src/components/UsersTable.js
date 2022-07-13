@@ -59,6 +59,21 @@ const Styles = styled.div`
       font-weight: 700;
     }
   }
+
+  table + div {
+    margin: 0.5rem auto;
+    width: 80%;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+    border-radius: 6px;
+    color: ${tableGreen};
+    border: 1px solid ${tableGreen};
+    box-sizing: border-box;
+  }
 `;
 
 // const clickedUserData = data.map((user) => ({ ...user }));
