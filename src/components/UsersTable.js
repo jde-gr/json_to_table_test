@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Table from './UI/Table';
 
@@ -61,10 +61,53 @@ const Styles = styled.div`
   }
 `;
 
+// const clickedUserData = data.map((user) => ({ ...user }));
+
 const UsersTable = () => {
+  const [filteredData, setFilteredData] = useState(data);
+  const clickHandler = (event, userId) => {};
+
+  const filterByNameHandler = (event) => {
+    setFilteredData(
+      data.filter((user) => {
+        return (
+          user.firstName.toLowerCase().includes(event.target.value) ||
+          user.lastName.toLowerCase().includes(event.target.value)
+        );
+      })
+    );
+  };
+
+  const filterHandler = (event) => {
+    setFilteredData(
+      data.filter((user) => {
+        const value = event.target.value;
+        return (
+          user.firstName.toLowerCase().includes(value) ||
+          user.lastName.toLowerCase().includes(value) ||
+          user.emailAddress.toLowerCase().includes(value) ||
+          user.userId.toString().includes(value) ||
+          user.phoneNumber.toString().includes(value)
+        );
+      })
+    );
+  };
+
   return (
     <Styles>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={filteredData} />
+      <div>
+        <input
+          type='text'
+          placeholder='Filtrar por nombre'
+          onChange={filterByNameHandler}
+        />
+        <input
+          type='text'
+          placeholder='Filtrar por cualquier campo'
+          onChange={filterHandler}
+        />
+      </div>
     </Styles>
   );
 };
